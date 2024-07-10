@@ -1,0 +1,51 @@
+@startuml Libreria
+
+class Author {
+    - name: String
+    + Author(name: String)
+    + getName(): String
+    + toString(): String
+}
+
+class Book {
+    - title: String
+    - authors: List<Author>
+    - year: int
+    - keywords: List<String>
+    + Book(title: String, authors: List<Author>, year: int, keywords: List<String>)
+    + getTitle(): String
+    + getAuthors(): List<Author>
+    + getYear(): int
+    + getKeywords(): List<String>
+    + toString(): String
+}
+
+class LibraryManager {
+    - books: List<Book>
+    + LibraryManager()
+    + addBook(book: Book)
+    + removeBook(title: String)
+    + editBook(title: String, newBook: Book)
+    + searchByTitle(title: String): List<Book>
+    + searchByAuthor(authorName: String): List<Book>
+    + searchByYear(year: int): List<Book>
+    + searchByKeyword(keyword: String): List<Book>
+    + listBooks()
+}
+
+class App {
+    - libraryManager: LibraryManager
+    - scanner: Scanner
+    + main(args: String[])
+    - createBook(): Book
+    - addBook()
+    - removeBook()
+    - editBook()
+    - searchBook()
+}
+
+App ..> LibraryManager : uses
+LibraryManager "1" *-- "0..*" Book : contains
+Book "0..*" *-- "0..*" Author : has
+
+@enduml
