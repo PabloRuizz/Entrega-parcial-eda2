@@ -2,7 +2,7 @@
 
 <div align=center>
 
-|![](/modeloUML/modelo.svg)|
+|![](/ModeloUML/modelo.svg)|
 |:-:|
 [App](App.java)
 [Author](Author.java) 
